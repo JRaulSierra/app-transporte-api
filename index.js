@@ -1,7 +1,14 @@
 const express = require('express');
+const morgan = require('morgan')
 const app = express();
 const PORT = 3000;
 
+app.use(morgan('tiny'))
+
+app.use((req, res, next) =>{
+    console.log('se ejecuto un endpoint');
+    next();
+})
 app.get('/', (req, res) => {
     res.send('Hola desde nuestra app 🐱‍👤');
 })
