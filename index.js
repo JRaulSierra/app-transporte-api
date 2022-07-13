@@ -1,9 +1,12 @@
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
-const PORT = 3000
+const PORT = 8000
 
 const apiRoutes = require('./src/routes')
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use((req, res, next) => {
   // console.log(`Se solicitó la ruta ${req.url} con el metodo HTTP ${req.method}`);
